@@ -9,9 +9,7 @@ public class Pet {
     private String species;
     private List<String> vaccinations = new ArrayList<>();
 
-    public Pet() {
-
-    }
+    public Pet() {}
 
     public String getName() {
         return name;
@@ -42,18 +40,14 @@ public class Pet {
         this.species = species;
     }
 
-    public String listVaccinations(List<String> vaccineList){
-        String tempVacString = "";
-       for(String vaccine: vaccineList){
-           tempVacString += vaccine + ", ";
-       }
-        System.out.println("print out beofre substring=" +tempVacString);
-        tempVacString = tempVacString.substring(0, tempVacString.length()-3);
-        System.out.println("print out after substring=" +tempVacString);
-
-        return tempVacString;
-
+    public String listVaccinations() {
+        List<String> vaccineList = vaccinations;
+        List<String> vaccinesComma = new ArrayList<>();
+        for (String vaccine : vaccineList) {
+            vaccinesComma.add(vaccine);
+        }
+        String vaccinesCommaString = String.join(", ", vaccinesComma);
+//        System.out.println(vaccinesCommaString);
+        return vaccinesCommaString;
+        }
     }
-
-
-}

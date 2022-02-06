@@ -7,27 +7,20 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PetTests {
+import static org.junit.Assert.assertEquals;
 
-    public Pet pets = new Pet();
+public class PetTests {
 
     @Test
     public void listVaccinations_normalStringList_ExpectCommaDeliminatedString(){
-        //Arrange
+        Pet pet = new Pet();
+//        Arrange + Act
         List<String> test = new ArrayList<>();
         test.add("Rabies");
         test.add("Distemper");
         test.add("Parvo");
-
-        //Act
-       //List<String> result = pets.listVaccinations(new String[] {"Rabies", "Distemper", "Parvo"});;
-
-
-
-
-        //Assert
-        //assertEquals("Rabies, Distemper, Parvo",)
-
-
+        pet.setVaccinations(test);
+//        Assert
+        assertEquals("Rabies, Distemper, Parvo", pet.listVaccinations());
     }
 }

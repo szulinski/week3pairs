@@ -1,8 +1,11 @@
 package com.techelevator.hr;
 
+import com.techelevator.Billable;
 import com.techelevator.Person;
 
-public class Employee extends Person {
+import java.util.Map;
+
+public class Employee extends Person implements Billable {
 
     private int employeeId;
     private String title;
@@ -14,7 +17,7 @@ public class Employee extends Person {
     }
 
     public Employee(String firstName, String lastName, String title, double salary) {
-        super(firstName,lastName);
+        super(firstName, lastName);
         this.title = title;
         this.salary = salary;
     }
@@ -25,7 +28,7 @@ public class Employee extends Person {
     }
 
     public void raiseSalary(double percentage) {
-        if( percentage > 0) {
+        if (percentage > 0) {
             this.salary += salary * percentage / 100;
         }
     }
@@ -65,4 +68,16 @@ public class Employee extends Person {
         this.salary = salary;
     }
 
+    @Override
+    public double getBalanceDue(Map<String, Double> serviceMap) {
+        double billTotal = 0.00;
+        for (Map.Entry<String, Double> service : serviceMap.entrySet()) {
+            if (service.getKey() == "Walking") {
+                billTotal += service.getValue() / 2;
+            } else {
+                billTotal += service.getValue();
+            }
+        }
+        return billTotal;
+    }
 }
